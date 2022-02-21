@@ -1,4 +1,22 @@
 const createHTML = (workers) => {
+    let workerhtml
+    workers.forEach(worker =>(
+        
+        workerhtml+=`
+        <div class="col">
+        <div class="card shadow-sm">
+            <div class="col card-body bg-dark">
+                <h1 class="align-items-center text-left text-white" >John</h1>
+                <h2 class="align-items-center text-left text-white" >Manager</h2>
+            </div>
+            <div class="card-body">
+                <h4 class="card-text">ID ` + worker.id +`</p>
+                <h4 class="card-text">email ` + worker.email +`</p>
+                <h4 class="card-text">office</p>
+            </div>
+        </div>
+    </div>`
+    ))
 return `
 <html lang="en"><head>
     <meta charset="utf-8">
@@ -62,26 +80,10 @@ return `
 
   <div class="album py-5 bg-light">
     <div class="container">
-
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <div class="col">
-
-          <div class="card shadow-sm">
-            <div class="col card-body bg-dark">
-                <h1 class="align-items-center text-left text-white" >John</h1>
-                <h2 class="align-items-center text-left text-white" >Manager</h2>
-            </div>
-            <div class="card-body">
-            <h4 class="card-text">ID</p>
-            <h4 class="card-text">email</p>
-             <h4 class="card-text">office</p>
-            </div>
-          </div>
-        </div>
-
         
-      
-        
+      ` + workerhtml +`
+
      </div>
     </div>
      
