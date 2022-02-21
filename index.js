@@ -66,6 +66,7 @@ const questions=commonQuestions.concat(managerQuestions)
         response.id,
         response.email,
         response.office,
+        "Manager"
              );
              workforce.push(manager);
           addEmployee()
@@ -96,6 +97,7 @@ const addEmployee =() => {
         addIntern();
         break;
       default:
+        makeHTML();
     }
         
       });
@@ -137,5 +139,10 @@ const addEngineer =() => {
             });
             
         }
-
+        function makeHTML() {
+            fs.writeFile("./dist/workforce.html", createHTML(workforce), (error) => {
+              error ? console.log(error) : console.log("workforce.html created");
+            });
+            console.log(workforce);
+          }
 start()
