@@ -4,25 +4,29 @@ const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
-
-const initialQuestions = [
+let role = "manager"
+const commonQuestions = [
     {
         type: "input",
-        name: "manager",
-        message: "Enter manager's name",
+        name: "name",
+        message: "Enter " + role + "'s name",
        
       },
      {type: "input",
       name: "id",
-      message: "Enter manager's ID number",
+      message: "Enter " + role + "'s ID number",
     },
       
     {
       type: "input",
       name: "email",
-      message: "Enter manager's email address",
+      message: "Enter " + role + "'s email address",
       
-    },
+    }, 
+  
+]
+const managerQuestions = [
+
     {
       type: "input",
       name: "office",
@@ -30,13 +34,21 @@ const initialQuestions = [
     }
 ]
 const start =() => {
-    inquirer.prompt(initialQuestions).then((response)=>{
+const questions=commonQuestions.concat(managerQuestions)
+    inquirer.prompt(questions).then((response)=>{
+     
+     
         const manager = new Manager(
-            response.name,
-            response.id,
-            response.email,
-            response.office
-          );
+        response.name,
+        response.id,
+        response.email,
+        response.office,
+             );
+           
+       
+
+
+
           addEmployee()
     });
     
@@ -52,7 +64,16 @@ const addEmployee =() => {
         },
       ];
       inquirer.prompt(newEmployee).then((response) => {
-        
+        const role = response.role;
+    switch (role) {
+      case "Engineer":
+        addEngineer();
+        break;
+      case "Intern":
+        addIntern();
+        break;
+      default:
+    }
         
       });
 
