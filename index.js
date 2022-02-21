@@ -37,7 +37,25 @@ const start =() => {
             response.email,
             response.office
           );
-    })
+          addEmployee()
+    });
+    
+}
+const addEmployee =() => {
+    const newEmployee = [
+        {
+          type: "list",
+          name: "role",
+          message:
+            "Do you want to add an employee to your team? Please select our new employee's role.",
+          choices: ["Engineer", "Intern", "No more Employees"],
+        },
+      ];
+      inquirer.prompt(newEmployee).then((response) => {
+        
+        
+      });
+
 }
 
 start()
