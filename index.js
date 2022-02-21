@@ -4,27 +4,32 @@ const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
-let role = "manager"
-const commonQuestions = [
-    {
-        type: "input",
-        name: "name",
-        message: "Enter " + role + "'s name",
-       
-      },
-     {type: "input",
-      name: "id",
-      message: "Enter " + role + "'s ID number",
-    },
+
+
+let commonQuestions = []
+const setCommonQuestions = (position) => {
+    commonQuestions =[
+        {
+            type: "input",
+            name: "name",
+            message: "Enter " + position + "'s name",
+           
+          },
+         {type: "input",
+          name: "id",
+          message: "Enter " + position + "'s ID number",
+        },
+          
+        {
+          type: "input",
+          name: "email",
+          message: "Enter " + position + "'s email address",
+          
+        }, 
       
-    {
-      type: "input",
-      name: "email",
-      message: "Enter " + role + "'s email address",
-      
-    }, 
-  
-]
+    ]
+}
+
 const managerQuestions = [
 
     {
@@ -33,10 +38,28 @@ const managerQuestions = [
       message: "Enter manager's office number",
     }
 ]
+const engineerQuestions = [
+
+    {
+      type: "input",
+      name: "git",
+      message: "Enter engineers's github username",
+    }
+]
+const internQuestions = [
+
+    {
+      type: "input",
+      name: "school",
+      message: "Enter intern's school",
+    }
+]
+
 const start =() => {
+    setCommonQuestions("manager")
 const questions=commonQuestions.concat(managerQuestions)
     inquirer.prompt(questions).then((response)=>{
-     
+        
      
         const manager = new Manager(
         response.name,
@@ -45,10 +68,6 @@ const questions=commonQuestions.concat(managerQuestions)
         response.office,
              );
            
-       
-
-
-
           addEmployee()
     });
     
@@ -59,7 +78,7 @@ const addEmployee =() => {
           type: "list",
           name: "role",
           message:
-            "Do you want to add an employee to your team? Please select our new employee's role.",
+            "Do you want to add an employee to your team? Please select your new employee's role.",
           choices: ["Engineer", "Intern", "No more Employees"],
         },
       ];
@@ -67,9 +86,13 @@ const addEmployee =() => {
         const role = response.role;
     switch (role) {
       case "Engineer":
+       
+        setCommonQuestions("engineer")
         addEngineer();
         break;
       case "Intern":
+       
+        setCommonQuestions("intern")
         addIntern();
         break;
       default:
@@ -78,5 +101,41 @@ const addEmployee =() => {
       });
 
 }
+
+const addEngineer =() => {
+    const questions=commonQuestions.concat(engineerQuestions)
+        inquirer.prompt(questions).then((response)=>{
+         
+         
+            const engineer = new Engineer(
+            response.name,
+            response.id,
+            response.email,
+            response.office,
+            "Engineer",
+                 );
+               
+              addEmployee()
+        });
+        
+    }
+
+    const addIntern =() => {
+        const questions=commonQuestions.concat(internQuestions)
+            inquirer.prompt(questions).then((response)=>{
+             
+             
+                const intern = new Intern(
+                response.name,
+                response.id,
+                response.email,
+                response.school,
+                "Intern",
+                     );
+                   
+                  addEmployee()
+            });
+            
+        }
 
 start()
