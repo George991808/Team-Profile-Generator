@@ -1,22 +1,34 @@
 const createHTML = (workers) => {
-    let workerhtml
-    workers.forEach(worker =>(
-        
+    let workerhtml=""
+    let occupationSpecificInfo
+    workers.forEach((worker) => {
+    
+        switch (worker.role) {
+            case "Engineer":            
+            occupationSpecificInfo= "github " + worker.gitHub   ;         
+              break;
+            case "Intern":
+                occupationSpecificInfo= "school " + worker.school ;
+                break;
+             default:
+             occupationSpecificInfo= "office Number " + worker.officeNumber ;
+        }
+          
         workerhtml+=`
         <div class="col">
         <div class="card shadow-sm">
             <div class="col card-body bg-dark">
-                <h1 class="align-items-center text-left text-white" >John</h1>
-                <h2 class="align-items-center text-left text-white" >Manager</h2>
+                <h1 class="align-items-center text-left text-white" >` + worker.name +`</h1>
+                <h2 class="align-items-center text-left text-white" >` + worker.role +`</h2>
             </div>
             <div class="card-body">
                 <h4 class="card-text">ID ` + worker.id +`</p>
-                <h4 class="card-text">email ` + worker.email +`</p>
-                <h4 class="card-text">office</p>
+                <h4 class="card-text">email <a>` + worker.email +`</a></p>
+                <h4 class="card-text">` + occupationSpecificInfo +` </p>
             </div>
         </div>
     </div>`
-    ))
+    });
 return `
 <html lang="en"><head>
     <meta charset="utf-8">

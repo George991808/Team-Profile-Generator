@@ -42,7 +42,7 @@ const engineerQuestions = [
 
     {
       type: "input",
-      name: "git",
+      name: "github",
       message: "Enter engineers's github username",
     }
 ]
