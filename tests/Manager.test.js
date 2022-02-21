@@ -13,17 +13,17 @@ describe('Manager class test', () => {
 
     })
 
-    it("is name manager name george", () => {
+    it("is manager name george", () => {
         const manager = new Manager("george", 1, "george@12.com", 2, "manager")
         expect(manager.name).toBe("george");
     });
 
-    it("is name manager id 1", () => {
+    it("is manager id 1", () => {
         const manager = new Manager("george", 1, "george@12.com", 2, "manager")
         expect(manager.id).toBe(1);
     });
 
-    it("is name manager email george@12.com", () => {
+    it("is manager email george@12.com", () => {
         const manager = new Manager("george", 1, "george@12.com", 2, "manager")
         expect(manager.email).toBe("george@12.com");
     });

@@ -13,17 +13,17 @@ describe('Intern class test', () => {
 
     })
 
-    it("is name intern name george", () => {
+    it("is intern name george", () => {
         const intern = new Intern("george", 1, "george@12.com", "UWA", "intern")
         expect(intern.name).toBe("george");
     });
 
-    it("is name intern id 1", () => {
+    it("is intern id 1", () => {
         const intern = new Intern("george", 1, "george@12.com", "UWA", "intern")
         expect(intern.id).toBe(1);
     });
 
-    it("is name intern email george@12.com", () => {
+    it("is intern email george@12.com", () => {
         const intern = new Intern("george", 1, "george@12.com", "UWA", "intern")
         expect(intern.email).toBe("george@12.com");
     });

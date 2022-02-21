@@ -13,17 +13,17 @@ describe('Employee class test', () => {
 
     })
 
-    it("is name employee name george", () => {
+    it("is employee name george", () => {
         const employee = new Employee("george", 1, "george@12.com")
         expect(employee.name).toBe("george");
     });
 
-    it("is name employee id 1", () => {
+    it("is employee id 1", () => {
         const employee = new Employee("george", 1, "george@12.com")
         expect(employee.id).toBe(1);
     });
 
-    it("is name employee email george@12.com", () => {
+    it("is employee email george@12.com", () => {
         const employee = new Employee("george", 1, "george@12.com")
         expect(employee.email).toBe("george@12.com");
     });
