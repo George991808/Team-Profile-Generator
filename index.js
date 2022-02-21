@@ -4,8 +4,8 @@ const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
-
-
+const createHTML = require("./src/createHTML");
+const workforce = [];
 let commonQuestions = []
 const setCommonQuestions = (position) => {
     commonQuestions =[
@@ -67,7 +67,7 @@ const questions=commonQuestions.concat(managerQuestions)
         response.email,
         response.office,
              );
-           
+             workforce.push(manager);
           addEmployee()
     });
     
@@ -114,7 +114,7 @@ const addEngineer =() => {
             response.office,
             "Engineer",
                  );
-               
+                 workforce.push(engineer);
               addEmployee()
         });
         
@@ -132,7 +132,7 @@ const addEngineer =() => {
                 response.school,
                 "Intern",
                      );
-                   
+                     workforce.push(intern);
                   addEmployee()
             });
             
