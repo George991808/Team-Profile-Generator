@@ -5,13 +5,13 @@ const createHTML = (workers) => {
     
         switch (worker.role) {
             case "Engineer":            
-            occupationSpecificInfo= "github " + worker.gitHub   ;         
+            occupationSpecificInfo= "Github <a href=https://github.com/" + worker.gitHub + " >" + worker.gitHub + "</a>" ;         
               break;
             case "Intern":
-                occupationSpecificInfo= "school " + worker.school ;
+                occupationSpecificInfo= "School " + worker.school ;
                 break;
              default:
-             occupationSpecificInfo= "office Number " + worker.officeNumber ;
+             occupationSpecificInfo= "Office Number " + worker.officeNumber ;
         }
           
         workerhtml+=`
@@ -22,9 +22,9 @@ const createHTML = (workers) => {
                 <h2 class="align-items-center text-left text-white" >` + worker.role +`</h2>
             </div>
             <div class="card-body">
-                <h4 class="card-text">ID ` + worker.id +`</p>
-                <h4 class="card-text">email <a>` + worker.email +`</a></p>
-                <h4 class="card-text">` + occupationSpecificInfo +` </p>
+                <h4 class="card-text">ID ` + worker.id +`</h4>
+                <h4 class="card-text">Email <a href="worker.email">` + worker.email +`</a></h4>
+                <h4 class="card-text">` + occupationSpecificInfo +` </h4>
             </div>
         </div>
     </div>`
